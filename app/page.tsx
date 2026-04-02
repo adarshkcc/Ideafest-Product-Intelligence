@@ -219,7 +219,8 @@ export default function Home() {
           {result && (
             <div className="space-y-8 animate-in">
               {/* Product Flowchart */}
-              <ProductFlowchart productData={result.productData as Record<string, unknown>} />
+              {/* @ts-expect-error - productData structure varies */}
+              <ProductFlowchart productData={result.productData} />
 
               {/* Analysis Results */}
               <div className="rounded-2xl shadow-2xl overflow-hidden" style={{ 
