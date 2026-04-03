@@ -40,15 +40,15 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
       border: '2px solid #e0e0e0'
     }}>
       {/* Enterprise Header with Gradient */}
-      <div className="px-8 py-12 text-white" style={{ background: 'linear-gradient(135deg, #3c4145 0%, #2a2d31 50%, #3c4145 100%)' }}>
-        <h2 className="text-4xl font-bold mb-2 drop-shadow-lg">📊 Product Ecosystem</h2>
-        <p className="opacity-90 text-lg drop-shadow-lg">Complete product relationships and data flow</p>
+      <div className="px-4 sm:px-8 py-8 sm:py-12 text-white" style={{ background: 'linear-gradient(135deg, #3c4145 0%, #2a2d31 50%, #3c4145 100%)' }}>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 sm:mb-2 drop-shadow-lg">📊 Product Ecosystem</h2>
+        <p className="opacity-90 text-sm sm:text-base lg:text-lg drop-shadow-lg">Complete product relationships and data flow</p>
       </div>
 
-      <div className="p-10">
+      <div className="px-4 sm:px-8 md:px-10 py-6 sm:py-10">
         {/* Main Product Card */}
-        <div className="mb-12">
-          <div className="flex flex-col lg:flex-row items-center gap-8 rounded-2xl p-8 border-2 shadow-lg" style={{ 
+        <div className="mb-8 sm:mb-12">
+          <div className="flex flex-col lg:flex-row items-center gap-4 sm:gap-8 rounded-2xl p-4 sm:p-8 border-2 shadow-lg" style={{ 
             background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 1) 100%)',
             borderColor: '#e0e0e0'
           }}>
@@ -58,18 +58,18 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
                 <img
                   src={productData.image}
                   alt={productData.name}
-                  className="w-40 h-40 object-cover rounded-xl shadow-lg border-2 relative"
+                  className="w-32 sm:w-40 h-32 sm:h-40 object-cover rounded-xl shadow-lg border-2 relative"
                   style={{ borderColor: '#5db043' }}
                   loading="lazy"
                 />
               </div>
             </div>
-            <div className="flex-1">
-              <h1 className="text-4xl font-bold mb-3" style={{ color: '#3c4145' }}>{productData.name}</h1>
-              <div className="text-white px-4 py-2 rounded-full inline-block mb-4 font-bold shadow-md" style={{ background: 'linear-gradient(90deg, #4a8c35 0%, #5db043 50%, #6ec956 100%)', boxShadow: '0 8px 18px rgba(93, 176, 67, 0.3)' }}>
+            <div className="flex-1 text-center lg:text-left">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3" style={{ color: '#3c4145' }}>{productData.name}</h1>
+              <div className="text-white px-3 sm:px-4 py-2 rounded-full inline-block mb-3 sm:mb-4 font-bold shadow-md text-sm sm:text-base" style={{ background: 'linear-gradient(90deg, #4a8c35 0%, #5db043 50%, #6ec956 100%)', boxShadow: '0 8px 18px rgba(93, 176, 67, 0.3)' }}>
                 <span>SKU: {productData.sku}</span>
               </div>
-              <p className="text-lg leading-relaxed" style={{ color: '#3c4145' }}>
+              <p className="text-sm sm:text-base lg:text-lg leading-relaxed" style={{ color: '#3c4145' }}>
                 Enterprise product with{' '}
                 <span className="font-bold" style={{ color: '#5db043' }}>{productData.brand?.length || 0}</span>{' '}
                 brands,{' '}
@@ -89,29 +89,29 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
         </div>
 
         {/* Connection Divider */}
-        <div className="flex items-center gap-4 mb-12">
+        <div className="flex items-center gap-2 sm:gap-4 mb-8 sm:mb-12">
           <div className="flex-1 h-1" style={{ backgroundImage: 'linear-gradient(to right, transparent, #5db043, #3c4145, #5db043, transparent)' }}></div>
-          <span className="font-bold text-lg px-4" style={{ color: '#3c4145' }}>⬇ Data Hierarchy ⬇</span>
+          <span className="font-bold text-xs sm:text-lg px-2 sm:px-4 whitespace-nowrap" style={{ color: '#3c4145' }}>⬇ Data Hierarchy ⬇</span>
           <div className="flex-1 h-1" style={{ backgroundImage: 'linear-gradient(to right, transparent, #5db043, #3c4145, #5db043, transparent)' }}></div>
         </div>
 
-        {/* Six Main Sections Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-6 gap-6 mb-8">
+        {/* Six Main Sections Grid - Responsive */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 sm:gap-6 mb-8">
           {/* Brand Section */}
           <div className="group">
-            <div className="rounded-t-2xl px-6 py-5 text-white shadow-lg relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #3c4145 0%, #2a2d31 50%, #3c4145 100%)', boxShadow: 'inset -2px -2px 6px rgba(0,0,0,0.3), inset 2px 2px 6px rgba(255,255,255,0.1), 0 10px 25px rgba(0, 0, 0, 0.2)' }}>
+            <div className="rounded-t-2xl px-3 sm:px-6 py-4 sm:py-5 text-white shadow-lg relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #3c4145 0%, #2a2d31 50%, #3c4145 100%)', boxShadow: 'inset -2px -2px 6px rgba(0,0,0,0.3), inset 2px 2px 6px rgba(255,255,255,0.1), 0 10px 25px rgba(0, 0, 0, 0.2)' }}>
               <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 35% 35%, rgba(255,255,255,0.15) 0%, transparent 60%)' }}></div>
-              <h3 className="text-2xl font-bold flex items-center gap-2 drop-shadow-lg relative">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold flex items-center gap-1 sm:gap-2 drop-shadow-lg relative">
                 🏢 Brands
               </h3>
-              <p className="text-sm mt-1 opacity-90 relative">{productData.brand?.length || 0} items</p>
+              <p className="text-xs sm:text-sm mt-1 opacity-90 relative">{productData.brand?.length || 0} items</p>
             </div>
-            <div className="rounded-b-2xl p-4 space-y-3 min-h-96 overflow-y-auto shadow-md" style={{ background: 'linear-gradient(180deg, rgba(248, 249, 250, 1) 0%, rgba(245, 245, 245, 1) 100%)', border: '2px solid #e0e0e0', borderTop: 'none' }}>
+            <div className="rounded-b-2xl p-3 sm:p-4 space-y-2 sm:space-y-3 min-h-64 sm:min-h-96 overflow-y-auto shadow-md" style={{ background: 'linear-gradient(180deg, rgba(248, 249, 250, 1) 0%, rgba(245, 245, 245, 1) 100%)', border: '2px solid #e0e0e0', borderTop: 'none' }}>
               {productData.brand && productData.brand.length > 0 ? (
                 productData.brand.map((brand, idx) => (
                   <div
                     key={brand.id}
-                    className="rounded-xl p-5 hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer border-0 group/card relative"
+                    className="rounded-xl p-3 sm:p-5 hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer border-0 group/card relative"
                     style={{ 
                       background: 'linear-gradient(135deg, rgba(248, 249, 250, 1) 0%, rgba(255, 255, 255, 1) 100%)',
                       boxShadow: '0 4px 15px rgba(93, 176, 67, 0.12), inset 0 1px 2px rgba(255,255,255,0.8)'
@@ -125,43 +125,43 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
                       e.currentTarget.style.boxShadow = '0 4px 15px rgba(93, 176, 67, 0.12), inset 0 1px 2px rgba(255,255,255,0.8)';
                     }}
                   >
-                    <div className="flex items-start gap-3 mb-2">
+                    <div className="flex items-start gap-2 sm:gap-3 mb-2">
                       {brand.image && (
                         <img
                           src={brand.image}
                           alt={brand.name}
-                          className="w-14 h-14 rounded-lg object-cover border-0 shadow-md shrink-0"
+                          className="w-10 sm:w-14 h-10 sm:h-14 rounded-lg object-cover border-0 shadow-md shrink-0"
                           loading="lazy"
                         />
                       )}
                       <div className="flex-1 min-w-0">
-                        <p className="font-bold text-sm truncate" style={{ color: '#3c4145' }}>{brand.name}</p>
+                        <p className="font-bold text-xs sm:text-sm truncate" style={{ color: '#3c4145' }}>{brand.name}</p>
                       </div>
                     </div>
-                    <p className="text-xs" style={{ color: '#00ff99', fontSize: '11px' }}>ID: <span style={{ color: '#999' }}>{brand.id.substring(0, 12)}...</span></p>
+                    <p className="text-xs" style={{ color: '#00ff99', fontSize: '10px' }}>ID: <span style={{ color: '#999' }}>{brand.id.substring(0, 8)}...</span></p>
                   </div>
                 ))
               ) : (
-                <p className="text-gray-400 text-center py-8">No brands available</p>
+                <p className="text-gray-400 text-center py-6 sm:py-8 text-xs sm:text-sm">No brands available</p>
               )}
             </div>
           </div>
 
           {/* Store Section */}
           <div className="group">
-            <div className="rounded-t-2xl px-6 py-5 text-white shadow-lg relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #3c4145 0%, #2a2d31 50%, #3c4145 100%)', boxShadow: 'inset -2px -2px 6px rgba(0,0,0,0.3), inset 2px 2px 6px rgba(255,255,255,0.1), 0 10px 25px rgba(0, 0, 0, 0.2)' }}>
+            <div className="rounded-t-2xl px-3 sm:px-6 py-4 sm:py-5 text-white shadow-lg relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #3c4145 0%, #2a2d31 50%, #3c4145 100%)', boxShadow: 'inset -2px -2px 6px rgba(0,0,0,0.3), inset 2px 2px 6px rgba(255,255,255,0.1), 0 10px 25px rgba(0, 0, 0, 0.2)' }}>
               <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 35% 35%, rgba(255,255,255,0.15) 0%, transparent 60%)' }}></div>
-              <h3 className="text-2xl font-bold flex items-center gap-2 drop-shadow-lg relative">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold flex items-center gap-1 sm:gap-2 drop-shadow-lg relative">
                 🏪 Stores
               </h3>
-              <p className="text-sm mt-1 opacity-90 relative">{productData.store?.length || 0} items</p>
+              <p className="text-xs sm:text-sm mt-1 opacity-90 relative">{productData.store?.length || 0} items</p>
             </div>
-            <div className="rounded-b-2xl p-4 space-y-3 min-h-96 overflow-y-auto shadow-md" style={{ background: 'linear-gradient(180deg, rgba(248, 249, 250, 1) 0%, rgba(245, 245, 245, 1) 100%)', border: '2px solid #e0e0e0', borderTop: 'none' }}>
+            <div className="rounded-b-2xl p-3 sm:p-4 space-y-2 sm:space-y-3 min-h-64 sm:min-h-96 overflow-y-auto shadow-md" style={{ background: 'linear-gradient(180deg, rgba(248, 249, 250, 1) 0%, rgba(245, 245, 245, 1) 100%)', border: '2px solid #e0e0e0', borderTop: 'none' }}>
               {productData.store && productData.store.length > 0 ? (
                 productData.store.map((store, idx) => (
                   <div
                     key={store.id}
-                    className="rounded-xl p-5 hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer border-0"
+                    className="rounded-xl p-3 sm:p-5 hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer border-0"
                     style={{ 
                       background: 'linear-gradient(135deg, rgba(248, 249, 250, 1) 0%, rgba(255, 255, 255, 1) 100%)',
                       boxShadow: '0 4px 15px rgba(93, 176, 67, 0.12), inset 0 1px 2px rgba(255,255,255,0.8)'
@@ -175,17 +175,17 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
                       e.currentTarget.style.boxShadow = '0 4px 15px rgba(93, 176, 67, 0.12), inset 0 1px 2px rgba(255,255,255,0.8)';
                     }}
                   >
-                    <p className="font-bold text-sm mb-2" style={{ color: '#3c4145' }}>{store.name}</p>
+                    <p className="font-bold text-xs sm:text-sm mb-1 sm:mb-2" style={{ color: '#3c4145' }}>{store.name}</p>
                     {store.location && (
-                      <p className="text-xs mb-2" style={{ color: '#666' }}>📍 {store.location}</p>
+                      <p className="text-xs mb-1 sm:mb-2" style={{ color: '#666' }}>📍 {store.location}</p>
                     )}
                     <span className="inline-block px-2 py-1 rounded-lg text-xs font-semibold" style={{ color: '#00ff99', background: 'rgba(0, 255, 153, 0.1)' }}>
-                        {store.id}
+                        {store.id.substring(0, 8)}
                     </span>
                   </div>
                 ))
               ) : (
-                <p className="text-gray-400 text-center py-8">No stores available</p>
+                <p className="text-gray-400 text-center py-6 sm:py-8 text-xs sm:text-sm">No stores available</p>
               )}
             </div>
           </div>
