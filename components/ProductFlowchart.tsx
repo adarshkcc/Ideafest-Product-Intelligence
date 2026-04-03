@@ -170,7 +170,7 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
                       <p className="font-bold text-sm truncate" style={{ color: '#3c4145' }}>{cat.name}</p>
                     </div>
                   </div>
-                  <p className="text-xs" style={{ color: '#00ff99', fontSize: '11px' }}>ID: <span style={{ color: '#999' }}>{cat.id.substring(0, 12)}...</span></p>
+                  <p className="text-xs" style={{ color: '#057452', fontSize: '11px' }}>ID: <span style={{ color: '#999' }}>{cat.id.substring(0, 12)}...</span></p>
                 </div>
               ))}
             </div>
@@ -204,7 +204,7 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
                   }}
                 >
                   <p className="font-bold text-sm mb-2" style={{ color: '#3c4145' }}>{cat.name}</p>
-                  <span className="inline-block px-2 py-1 rounded-lg text-xs font-semibold" style={{ color: '#00ff99', background: 'rgba(0, 255, 153, 0.1)' }}>
+                  <span className="inline-block px-2 py-1 rounded-lg text-xs font-semibold" style={{ color: '#057452', background: 'rgba(0, 255, 153, 0.1)' }}>
                       {cat.id}
                   </span>
                 </div>
@@ -243,7 +243,7 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
                     <div className="flex-1">
                       <p className="font-bold text-sm mb-2" style={{ color: '#3c4145' }}>{inv.inventoryName}</p>
                     </div>
-                    <span className="px-3 py-1 rounded-lg font-bold text-lg shadow-md" style={{ color: 'white', background: 'linear-gradient(135deg, #5db043 0%, #4a8c35 100%)' }}>
+                    <span className="px-3 py-1 rounded-lg font-bold text-lg shadow-md" style={{ color: 'white', background: inv.quantity==0?"#c62626": 'linear-gradient(135deg, #5db043 0%, #4a8c35 100%)' }}>
                       {inv.quantity}
                     </span>
                   </div>
