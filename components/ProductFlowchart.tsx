@@ -85,18 +85,18 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
               )}
 
               {/* Stores/Warehouses Chiplist */}
-              {productData.inventory && productData.inventory.length > 0 && (
+              
                 <div className="mb-3 sm:mb-4">
-                  <p className="text-xs sm:text-sm font-semibold mb-2" style={{ color: '#3c4145' }}>🏪 Locations:</p>
+                  <p className="text-xs sm:text-sm font-semibold mb-2" style={{ color: '#3c4145' }}>🏪 Store:</p>
                   <div className="flex flex-wrap gap-2">
-                    {productData.inventory.map((inv, id) => (
-                      <span key={id} className="px-3 py-1 rounded-full text-xs sm:text-sm font-semibold" style={{ background: '#525962', color: 'white', border: '1px solid #525962' }}>
-                        {inv.inventoryName}
+                  
+                      <span className="px-3 py-1 rounded-full text-xs sm:text-sm font-semibold" style={{ background: '#525962', color: 'white', border: '1px solid #525962' }}>
+                        Maxwells Hardware
                       </span>
-                    ))}
+                    
                   </div>
                 </div>
-              )}
+            
            
 
               {/* Product Description */}
