@@ -10,7 +10,7 @@ interface ProductData {
   brands?: string[];
   category: Array<{ id: string; name: string; image: string }>;
   catalog: Array<{ id: string; name: string }>;
-  inventory: Array<{ warehouse: string; quantity: number; status: string }>;
+  inventory: Array<{ inventoryName: string; quantity: number; status: string }>;
   pricelist: Array<{
     name: string;
     price: number;
@@ -85,17 +85,18 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
               )}
 
               {/* Stores/Warehouses Chiplist */}
-             
+              {productData.inventory && productData.inventory.length > 0 && (
                 <div className="mb-3 sm:mb-4">
-                  <p className="text-xs sm:text-sm font-semibold mb-2" style={{ color: '#3c4145' }}>🏪 Store:</p>
+                  <p className="text-xs sm:text-sm font-semibold mb-2" style={{ color: '#3c4145' }}>🏪 Locations:</p>
                   <div className="flex flex-wrap gap-2">
-                   
-                      <span className="px-3 py-1 rounded-full text-xs sm:text-sm font-semibold" style={{ background: '#525962', color: 'white', border: '1px solid #525962' }}>
-                        Maxwells Hardware
+                    {productData.inventory.map((inv, id) => (
+                      <span key={id} className="px-3 py-1 rounded-full text-xs sm:text-sm font-semibold" style={{ background: '#525962', color: 'white', border: '1px solid #525962' }}>
+                        {inv.inventoryName}
                       </span>
-                  
+                    ))}
                   </div>
                 </div>
+              )}
            
 
               {/* Product Description */}
@@ -240,7 +241,7 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
-                      <p className="font-bold text-sm mb-2" style={{ color: '#3c4145' }}>{inv.warehouse}</p>
+                      <p className="font-bold text-sm mb-2" style={{ color: '#3c4145' }}>{inv.inventoryName}</p>
                     </div>
                     <span className="px-3 py-1 rounded-lg font-bold text-lg shadow-md" style={{ color: 'white', background: 'linear-gradient(135deg, #5db043 0%, #4a8c35 100%)' }}>
                       {inv.quantity}
@@ -327,11 +328,11 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
                     <div className="grid grid-cols-2 gap-2 mt-4">
                       <div className="rounded-lg p-3" style={{ background: 'linear-gradient(135deg, rgba(0, 153, 204, 0.1) 0%, rgba(0, 153, 204, 0.05) 100%)', border: '1px solid rgba(0, 153, 204, 0.3)' }}>
                         <p className="text-xs font-semibold mb-1" style={{ color: '#0099cc' }}>From</p>
-                        <p className="text-xs font-bold" style={{ color: '#3c4145' }}>{new Date(price.activation).toLocaleDateString('en-US', { day: 'numeric', month: 'short', weekday: 'short' })}</p>
+                        <p className="text-xs font-bold" style={{ color: '#3c4145' }}>{new Date(price.activation).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
                       </div>
                       <div className="rounded-lg p-3" style={{ background: 'linear-gradient(135deg, rgba(255, 68, 68, 0.1) 0%, rgba(255, 68, 68, 0.05) 100%)', border: '1px solid rgba(255, 68, 68, 0.3)' }}>
                         <p className="text-xs font-semibold mb-1" style={{ color: '#ff4444' }}>Till</p>
-                        <p className="text-xs font-bold" style={{ color: '#3c4145' }}>{new Date(price.expiry).toLocaleDateString('en-US', { day: 'numeric', month: 'short', weekday: 'short' })}</p>
+                        <p className="text-xs font-bold" style={{ color: '#3c4145' }}>{new Date(price.expiry).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
                       </div>
                     </div>
                   </div>
