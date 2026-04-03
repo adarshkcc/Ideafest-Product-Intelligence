@@ -6,11 +6,11 @@ interface ProductData {
   name: string;
   sku: string;
   image: string;
-  brand?: Array<{ id: string; name: string; image?: string }>;
-  store?: Array<{ id: string; name: string; location?: string }>;
+  description: string;
+  brands?: string[];
   category: Array<{ id: string; name: string; image: string }>;
   catalog: Array<{ id: string; name: string }>;
-  inventory: Array<{ quantity: number; inventory_name: string }>;
+  inventory: Array<{ warehouse: string; quantity: number; status: string }>;
   pricelist: Array<{
     name: string;
     price: number;
@@ -71,27 +71,27 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
               </div>
               
               {/* Brands Chiplist */}
-              {productData.brand && productData.brand.length > 0 && (
+              {productData.brands && productData.brands.length > 0 && (
                 <div className="mb-3 sm:mb-4">
                   <p className="text-xs sm:text-sm font-semibold mb-2" style={{ color: '#3c4145' }}>🏢 Brands:</p>
                   <div className="flex flex-wrap gap-2">
-                    {productData.brand.map((brand) => (
-                      <span key={brand.id} className="px-3 py-1 rounded-full text-xs sm:text-sm font-semibold" style={{ background: 'rgba(93, 176, 67, 0.15)', color: '#4a8c35', border: '1px solid rgba(93, 176, 67, 0.3)' }}>
-                        {brand.name}
+                    {productData.brands.map((brand, id) => (
+                      <span key={id} className="px-3 py-1 rounded-full text-xs sm:text-sm font-semibold" style={{ background: '#525962', color: 'white', border: '1px solid #525962' }}>
+                        {brand}
                       </span>
                     ))}
                   </div>
                 </div>
               )}
 
-              {/* Stores Chiplist */}
-              {productData.store && productData.store.length > 0 && (
+              {/* Stores/Warehouses Chiplist */}
+              {productData.inventory && productData.inventory.length > 0 && (
                 <div className="mb-3 sm:mb-4">
-                  <p className="text-xs sm:text-sm font-semibold mb-2" style={{ color: '#3c4145' }}>🏪 Stores:</p>
+                  <p className="text-xs sm:text-sm font-semibold mb-2" style={{ color: '#3c4145' }}>🏪 Warehouses:</p>
                   <div className="flex flex-wrap gap-2">
-                    {productData.store.map((store) => (
-                      <span key={store.id} className="px-3 py-1 rounded-full text-xs sm:text-sm font-semibold" style={{ background: 'rgba(93, 176, 67, 0.15)', color: '#4a8c35', border: '1px solid rgba(93, 176, 67, 0.3)' }}>
-                        {store.name}
+                    {productData.inventory.map((inv, id) => (
+                      <span key={id} className="px-3 py-1 rounded-full text-xs sm:text-sm font-semibold" style={{ background: '#525962', color: 'white', border: '1px solid #525962' }}>
+                        {inv.warehouse}
                       </span>
                     ))}
                   </div>
@@ -231,7 +231,7 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
-                      <p className="font-bold text-sm mb-2" style={{ color: '#3c4145' }}>{inv.inventory_name}</p>
+                      <p className="font-bold text-sm mb-2" style={{ color: '#3c4145' }}>{inv.warehouse}</p>
                     </div>
                     <span className="px-3 py-1 rounded-lg font-bold text-lg shadow-md" style={{ color: 'white', background: 'linear-gradient(135deg, #5db043 0%, #4a8c35 100%)' }}>
                       {inv.quantity}
