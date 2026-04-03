@@ -6,6 +6,8 @@ interface ProductData {
   name: string;
   sku: string;
   image: string;
+  brand?: Array<{ id: string; name: string; image?: string }>;
+  store?: Array<{ id: string; name: string; location?: string }>;
   category: Array<{ id: string; name: string; image: string }>;
   catalog: Array<{ id: string; name: string }>;
   inventory: Array<{ quantity: number; inventory_name: string }>;
@@ -69,6 +71,10 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
               </div>
               <p className="text-lg leading-relaxed" style={{ color: '#3c4145' }}>
                 Enterprise product with{' '}
+                <span className="font-bold" style={{ color: '#5db043' }}>{productData.brand?.length || 0}</span>{' '}
+                brands,{' '}
+                <span className="font-bold" style={{ color: '#5db043' }}>{productData.store?.length || 0}</span>{' '}
+                stores,{' '}
                 <span className="font-bold" style={{ color: '#5db043' }}>{productData.category.length}</span>{' '}
                 categories,{' '}
                 <span className="font-bold" style={{ color: '#5db043' }}>{productData.catalog.length}</span>{' '}
@@ -89,8 +95,101 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
           <div className="flex-1 h-1" style={{ backgroundImage: 'linear-gradient(to right, transparent, #5db043, #3c4145, #5db043, transparent)' }}></div>
         </div>
 
-        {/* Four Main Sections Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
+        {/* Six Main Sections Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-6 gap-6 mb-8">
+          {/* Brand Section */}
+          <div className="group">
+            <div className="rounded-t-2xl px-6 py-5 text-white shadow-lg relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #3c4145 0%, #2a2d31 50%, #3c4145 100%)', boxShadow: 'inset -2px -2px 6px rgba(0,0,0,0.3), inset 2px 2px 6px rgba(255,255,255,0.1), 0 10px 25px rgba(0, 0, 0, 0.2)' }}>
+              <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 35% 35%, rgba(255,255,255,0.15) 0%, transparent 60%)' }}></div>
+              <h3 className="text-2xl font-bold flex items-center gap-2 drop-shadow-lg relative">
+                🏢 Brands
+              </h3>
+              <p className="text-sm mt-1 opacity-90 relative">{productData.brand?.length || 0} items</p>
+            </div>
+            <div className="rounded-b-2xl p-4 space-y-3 min-h-96 overflow-y-auto shadow-md" style={{ background: 'linear-gradient(180deg, rgba(248, 249, 250, 1) 0%, rgba(245, 245, 245, 1) 100%)', border: '2px solid #e0e0e0', borderTop: 'none' }}>
+              {productData.brand && productData.brand.length > 0 ? (
+                productData.brand.map((brand, idx) => (
+                  <div
+                    key={brand.id}
+                    className="rounded-xl p-5 hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer border-0 group/card relative"
+                    style={{ 
+                      background: 'linear-gradient(135deg, rgba(248, 249, 250, 1) 0%, rgba(255, 255, 255, 1) 100%)',
+                      boxShadow: '0 4px 15px rgba(93, 176, 67, 0.12), inset 0 1px 2px rgba(255,255,255,0.8)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(93, 176, 67, 0.08) 0%, rgba(255, 255, 255, 1) 100%)';
+                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(93, 176, 67, 0.25), inset 0 1px 2px rgba(255,255,255,0.8)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(248, 249, 250, 1) 0%, rgba(255, 255, 255, 1) 100%)';
+                      e.currentTarget.style.boxShadow = '0 4px 15px rgba(93, 176, 67, 0.12), inset 0 1px 2px rgba(255,255,255,0.8)';
+                    }}
+                  >
+                    <div className="flex items-start gap-3 mb-2">
+                      {brand.image && (
+                        <img
+                          src={brand.image}
+                          alt={brand.name}
+                          className="w-14 h-14 rounded-lg object-cover border-0 shadow-md shrink-0"
+                          loading="lazy"
+                        />
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <p className="font-bold text-sm truncate" style={{ color: '#3c4145' }}>{brand.name}</p>
+                      </div>
+                    </div>
+                    <p className="text-xs" style={{ color: '#00ff99', fontSize: '11px' }}>ID: <span style={{ color: '#999' }}>{brand.id.substring(0, 12)}...</span></p>
+                  </div>
+                ))
+              ) : (
+                <p className="text-gray-400 text-center py-8">No brands available</p>
+              )}
+            </div>
+          </div>
+
+          {/* Store Section */}
+          <div className="group">
+            <div className="rounded-t-2xl px-6 py-5 text-white shadow-lg relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #3c4145 0%, #2a2d31 50%, #3c4145 100%)', boxShadow: 'inset -2px -2px 6px rgba(0,0,0,0.3), inset 2px 2px 6px rgba(255,255,255,0.1), 0 10px 25px rgba(0, 0, 0, 0.2)' }}>
+              <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 35% 35%, rgba(255,255,255,0.15) 0%, transparent 60%)' }}></div>
+              <h3 className="text-2xl font-bold flex items-center gap-2 drop-shadow-lg relative">
+                🏪 Stores
+              </h3>
+              <p className="text-sm mt-1 opacity-90 relative">{productData.store?.length || 0} items</p>
+            </div>
+            <div className="rounded-b-2xl p-4 space-y-3 min-h-96 overflow-y-auto shadow-md" style={{ background: 'linear-gradient(180deg, rgba(248, 249, 250, 1) 0%, rgba(245, 245, 245, 1) 100%)', border: '2px solid #e0e0e0', borderTop: 'none' }}>
+              {productData.store && productData.store.length > 0 ? (
+                productData.store.map((store, idx) => (
+                  <div
+                    key={store.id}
+                    className="rounded-xl p-5 hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer border-0"
+                    style={{ 
+                      background: 'linear-gradient(135deg, rgba(248, 249, 250, 1) 0%, rgba(255, 255, 255, 1) 100%)',
+                      boxShadow: '0 4px 15px rgba(93, 176, 67, 0.12), inset 0 1px 2px rgba(255,255,255,0.8)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(93, 176, 67, 0.08) 0%, rgba(255, 255, 255, 1) 100%)';
+                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(93, 176, 67, 0.25), inset 0 1px 2px rgba(255,255,255,0.8)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(248, 249, 250, 1) 0%, rgba(255, 255, 255, 1) 100%)';
+                      e.currentTarget.style.boxShadow = '0 4px 15px rgba(93, 176, 67, 0.12), inset 0 1px 2px rgba(255,255,255,0.8)';
+                    }}
+                  >
+                    <p className="font-bold text-sm mb-2" style={{ color: '#3c4145' }}>{store.name}</p>
+                    {store.location && (
+                      <p className="text-xs mb-2" style={{ color: '#666' }}>📍 {store.location}</p>
+                    )}
+                    <span className="inline-block px-2 py-1 rounded-lg text-xs font-semibold" style={{ color: '#00ff99', background: 'rgba(0, 255, 153, 0.1)' }}>
+                        {store.id}
+                    </span>
+                  </div>
+                ))
+              ) : (
+                <p className="text-gray-400 text-center py-8">No stores available</p>
+              )}
+            </div>
+          </div>
+
           {/* Categories Section */}
           <div className="group">
             <div className="rounded-t-2xl px-6 py-5 text-white shadow-lg relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #3c4145 0%, #2a2d31 50%, #3c4145 100%)', boxShadow: 'inset -2px -2px 6px rgba(0,0,0,0.3), inset 2px 2px 6px rgba(255,255,255,0.1), 0 10px 25px rgba(0, 0, 0, 0.2)' }}>
