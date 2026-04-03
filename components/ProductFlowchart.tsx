@@ -48,7 +48,7 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
       <div className="px-4 sm:px-8 md:px-10 py-6 sm:py-10">
         {/* Main Product Card */}
         <div className="mb-8 sm:mb-12">
-          <div className="flex flex-col lg:flex-row items-center gap-4 sm:gap-8 rounded-2xl p-4 sm:p-8 border-2 shadow-lg" style={{ 
+          <div className="flex flex-col lg:flex-row lg:items-start gap-4 sm:gap-8 rounded-2xl p-4 sm:p-8 border-2 shadow-lg" style={{ 
             background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 1) 100%)',
             borderColor: '#e0e0e0'
           }}>
@@ -85,16 +85,25 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
               )}
 
               {/* Stores/Warehouses Chiplist */}
-              {productData.inventory && productData.inventory.length > 0 && (
+             
                 <div className="mb-3 sm:mb-4">
-                  <p className="text-xs sm:text-sm font-semibold mb-2" style={{ color: '#3c4145' }}>🏪 Warehouses:</p>
+                  <p className="text-xs sm:text-sm font-semibold mb-2" style={{ color: '#3c4145' }}>🏪 Store:</p>
                   <div className="flex flex-wrap gap-2">
-                    {productData.inventory.map((inv, id) => (
-                      <span key={id} className="px-3 py-1 rounded-full text-xs sm:text-sm font-semibold" style={{ background: '#525962', color: 'white', border: '1px solid #525962' }}>
-                        {inv.warehouse}
+                   
+                      <span className="px-3 py-1 rounded-full text-xs sm:text-sm font-semibold" style={{ background: '#525962', color: 'white', border: '1px solid #525962' }}>
+                        Maxwells Hardware
                       </span>
-                    ))}
+                  
                   </div>
+                </div>
+           
+
+              {/* Product Description */}
+              {productData.description && (
+                <div className="mb-4 sm:mb-6">
+                  <p className="text-sm sm:text-base leading-relaxed" style={{ color: '#5a5a5a' }}>
+                    {productData.description}
+                  </p>
                 </div>
               )}
 
@@ -313,7 +322,7 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
                           {isActive ? '✓ Active' : 'Inactive'}
                         </span>
                       </div>
-                      <span className="font-bold text-3xl" style={{ color: '#5db043' }}>₹{price.price}</span>
+                      <span className="font-bold text-lg sm:text-xl" style={{ color: '#5db043' }}>₹{price.price}</span>
                     </div>
                     <div className="grid grid-cols-2 gap-2 mt-4">
                       <div className="rounded-lg p-3" style={{ background: 'linear-gradient(135deg, rgba(0, 153, 204, 0.1) 0%, rgba(0, 153, 204, 0.05) 100%)', border: '1px solid rgba(0, 153, 204, 0.3)' }}>
