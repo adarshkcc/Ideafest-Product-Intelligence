@@ -69,12 +69,37 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
               <div className="text-white px-3 sm:px-4 py-2 rounded-full inline-block mb-3 sm:mb-4 font-bold shadow-md text-sm sm:text-base" style={{ background: 'linear-gradient(90deg, #4a8c35 0%, #5db043 50%, #6ec956 100%)', boxShadow: '0 8px 18px rgba(93, 176, 67, 0.3)' }}>
                 <span>SKU: {productData.sku}</span>
               </div>
+              
+              {/* Brands Chiplist */}
+              {productData.brand && productData.brand.length > 0 && (
+                <div className="mb-3 sm:mb-4">
+                  <p className="text-xs sm:text-sm font-semibold mb-2" style={{ color: '#3c4145' }}>🏢 Brands:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {productData.brand.map((brand) => (
+                      <span key={brand.id} className="px-3 py-1 rounded-full text-xs sm:text-sm font-semibold" style={{ background: 'rgba(93, 176, 67, 0.15)', color: '#4a8c35', border: '1px solid rgba(93, 176, 67, 0.3)' }}>
+                        {brand.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Stores Chiplist */}
+              {productData.store && productData.store.length > 0 && (
+                <div className="mb-3 sm:mb-4">
+                  <p className="text-xs sm:text-sm font-semibold mb-2" style={{ color: '#3c4145' }}>🏪 Stores:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {productData.store.map((store) => (
+                      <span key={store.id} className="px-3 py-1 rounded-full text-xs sm:text-sm font-semibold" style={{ background: 'rgba(93, 176, 67, 0.15)', color: '#4a8c35', border: '1px solid rgba(93, 176, 67, 0.3)' }}>
+                        {store.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               <p className="text-sm sm:text-base lg:text-lg leading-relaxed" style={{ color: '#3c4145' }}>
                 Enterprise product with{' '}
-                <span className="font-bold" style={{ color: '#5db043' }}>{productData.brand?.length || 0}</span>{' '}
-                brands,{' '}
-                <span className="font-bold" style={{ color: '#5db043' }}>{productData.store?.length || 0}</span>{' '}
-                stores,{' '}
                 <span className="font-bold" style={{ color: '#5db043' }}>{productData.category.length}</span>{' '}
                 categories,{' '}
                 <span className="font-bold" style={{ color: '#5db043' }}>{productData.catalog.length}</span>{' '}
@@ -96,100 +121,7 @@ export function ProductFlowchart({ productData }: ProductFlowchartProps) {
         </div>
 
         {/* Six Main Sections Grid - Responsive */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 sm:gap-6 mb-8">
-          {/* Brand Section */}
-          <div className="group">
-            <div className="rounded-t-2xl px-3 sm:px-6 py-4 sm:py-5 text-white shadow-lg relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #3c4145 0%, #2a2d31 50%, #3c4145 100%)', boxShadow: 'inset -2px -2px 6px rgba(0,0,0,0.3), inset 2px 2px 6px rgba(255,255,255,0.1), 0 10px 25px rgba(0, 0, 0, 0.2)' }}>
-              <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 35% 35%, rgba(255,255,255,0.15) 0%, transparent 60%)' }}></div>
-              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold flex items-center gap-1 sm:gap-2 drop-shadow-lg relative">
-                🏢 Brands
-              </h3>
-              <p className="text-xs sm:text-sm mt-1 opacity-90 relative">{productData.brand?.length || 0} items</p>
-            </div>
-            <div className="rounded-b-2xl p-3 sm:p-4 space-y-2 sm:space-y-3 min-h-64 sm:min-h-96 overflow-y-auto shadow-md" style={{ background: 'linear-gradient(180deg, rgba(248, 249, 250, 1) 0%, rgba(245, 245, 245, 1) 100%)', border: '2px solid #e0e0e0', borderTop: 'none' }}>
-              {productData.brand && productData.brand.length > 0 ? (
-                productData.brand.map((brand, idx) => (
-                  <div
-                    key={brand.id}
-                    className="rounded-xl p-3 sm:p-5 hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer border-0 group/card relative"
-                    style={{ 
-                      background: 'linear-gradient(135deg, rgba(248, 249, 250, 1) 0%, rgba(255, 255, 255, 1) 100%)',
-                      boxShadow: '0 4px 15px rgba(93, 176, 67, 0.12), inset 0 1px 2px rgba(255,255,255,0.8)'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(93, 176, 67, 0.08) 0%, rgba(255, 255, 255, 1) 100%)';
-                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(93, 176, 67, 0.25), inset 0 1px 2px rgba(255,255,255,0.8)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(248, 249, 250, 1) 0%, rgba(255, 255, 255, 1) 100%)';
-                      e.currentTarget.style.boxShadow = '0 4px 15px rgba(93, 176, 67, 0.12), inset 0 1px 2px rgba(255,255,255,0.8)';
-                    }}
-                  >
-                    <div className="flex items-start gap-2 sm:gap-3 mb-2">
-                      {brand.image && (
-                        <img
-                          src={brand.image}
-                          alt={brand.name}
-                          className="w-10 sm:w-14 h-10 sm:h-14 rounded-lg object-cover border-0 shadow-md shrink-0"
-                          loading="lazy"
-                        />
-                      )}
-                      <div className="flex-1 min-w-0">
-                        <p className="font-bold text-xs sm:text-sm truncate" style={{ color: '#3c4145' }}>{brand.name}</p>
-                      </div>
-                    </div>
-                    <p className="text-xs" style={{ color: '#00ff99', fontSize: '10px' }}>ID: <span style={{ color: '#999' }}>{brand.id.substring(0, 8)}...</span></p>
-                  </div>
-                ))
-              ) : (
-                <p className="text-gray-400 text-center py-6 sm:py-8 text-xs sm:text-sm">No brands available</p>
-              )}
-            </div>
-          </div>
-
-          {/* Store Section */}
-          <div className="group">
-            <div className="rounded-t-2xl px-3 sm:px-6 py-4 sm:py-5 text-white shadow-lg relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #3c4145 0%, #2a2d31 50%, #3c4145 100%)', boxShadow: 'inset -2px -2px 6px rgba(0,0,0,0.3), inset 2px 2px 6px rgba(255,255,255,0.1), 0 10px 25px rgba(0, 0, 0, 0.2)' }}>
-              <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 35% 35%, rgba(255,255,255,0.15) 0%, transparent 60%)' }}></div>
-              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold flex items-center gap-1 sm:gap-2 drop-shadow-lg relative">
-                🏪 Stores
-              </h3>
-              <p className="text-xs sm:text-sm mt-1 opacity-90 relative">{productData.store?.length || 0} items</p>
-            </div>
-            <div className="rounded-b-2xl p-3 sm:p-4 space-y-2 sm:space-y-3 min-h-64 sm:min-h-96 overflow-y-auto shadow-md" style={{ background: 'linear-gradient(180deg, rgba(248, 249, 250, 1) 0%, rgba(245, 245, 245, 1) 100%)', border: '2px solid #e0e0e0', borderTop: 'none' }}>
-              {productData.store && productData.store.length > 0 ? (
-                productData.store.map((store, idx) => (
-                  <div
-                    key={store.id}
-                    className="rounded-xl p-3 sm:p-5 hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer border-0"
-                    style={{ 
-                      background: 'linear-gradient(135deg, rgba(248, 249, 250, 1) 0%, rgba(255, 255, 255, 1) 100%)',
-                      boxShadow: '0 4px 15px rgba(93, 176, 67, 0.12), inset 0 1px 2px rgba(255,255,255,0.8)'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(93, 176, 67, 0.08) 0%, rgba(255, 255, 255, 1) 100%)';
-                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(93, 176, 67, 0.25), inset 0 1px 2px rgba(255,255,255,0.8)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(248, 249, 250, 1) 0%, rgba(255, 255, 255, 1) 100%)';
-                      e.currentTarget.style.boxShadow = '0 4px 15px rgba(93, 176, 67, 0.12), inset 0 1px 2px rgba(255,255,255,0.8)';
-                    }}
-                  >
-                    <p className="font-bold text-xs sm:text-sm mb-1 sm:mb-2" style={{ color: '#3c4145' }}>{store.name}</p>
-                    {store.location && (
-                      <p className="text-xs mb-1 sm:mb-2" style={{ color: '#666' }}>📍 {store.location}</p>
-                    )}
-                    <span className="inline-block px-2 py-1 rounded-lg text-xs font-semibold" style={{ color: '#00ff99', background: 'rgba(0, 255, 153, 0.1)' }}>
-                        {store.id.substring(0, 8)}
-                    </span>
-                  </div>
-                ))
-              ) : (
-                <p className="text-gray-400 text-center py-6 sm:py-8 text-xs sm:text-sm">No stores available</p>
-              )}
-            </div>
-          </div>
-
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
           {/* Categories Section */}
           <div className="group">
             <div className="rounded-t-2xl px-6 py-5 text-white shadow-lg relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #3c4145 0%, #2a2d31 50%, #3c4145 100%)', boxShadow: 'inset -2px -2px 6px rgba(0,0,0,0.3), inset 2px 2px 6px rgba(255,255,255,0.1), 0 10px 25px rgba(0, 0, 0, 0.2)' }}>
